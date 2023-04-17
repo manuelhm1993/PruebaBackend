@@ -3,7 +3,8 @@
 1. Clonar el repositorio
 2. Instalar las dependencias con: npm install
 3. Importar la base de datos
-4. Enviar las peticiones via postman, personalmente para agilizar el tiempo, utilicé REST Client, las rutas son las siguientes:
+4. Iniciar el servidor express: npm run start
+5. Enviar las peticiones via postman, personalmente para agilizar el tiempo, utilicé REST Client, las rutas son las siguientes:
 
 ###
 GET http://localhost:9000/api HTTP/1.1
