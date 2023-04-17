@@ -17,13 +17,23 @@ routes.post('/', (req, res) => {
     req.getConnection((err, conn) => {
         if(err) return res.send(err)
 
-        console.log(req.body)
-/*
         conn.query('INSERT INTO books set ?', [req.body], (err, rows) => {
             if(err) return res.send(err)
 
-            res.json(rows)
-        })*/
+            res.send('El libro fue agregado')
+        })
+    })
+})
+
+routes.delete('/:id', (req, res) => {
+    req.getConnection((err, conn) => {
+        if(err) return res.send(err)
+
+        conn.query('DELETE FROM books WHERE id = ?', [req.params.id], (err, rows) => {
+            if(err) return res.send(err)
+
+            res.send('El libro fue eliminado')
+        })
     })
 })
 
