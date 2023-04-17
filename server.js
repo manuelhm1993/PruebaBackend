@@ -4,6 +4,8 @@ const app = express()
 const mysql = require('mysql')
 const conexion = require('express-myconnection')
 
+const routes = require('./routes')
+
 // Configuraciones        ---------------------------------------------------------
 app.set('port', process.env.PORT || 9000)
 
@@ -16,12 +18,15 @@ const dbOptions = {
 }
 
 // Middlewares            ---------------------------------------------------------
-app.arguments(conexion(mysql, dbOptions, 'single'))
+app.use(conexion(mysql, dbOptions, 'single'))
+app.use(express.json())
 
 // Rutas                  ---------------------------------------------------------
 app.get('/', (req, res) => {
     res.send('Bienvenido a mi API')
 })
+
+app.use('/api', routes)
 
 // Ejecución del servidor ---------------------------------------------------------
 app.listen(app.get('port'), () => {
